@@ -32,8 +32,7 @@ module.exports = function({secretId, secretKey, region}) {
 
         const client = new TmsClient(clientConfig);
         try {
-          const respcommet = await client.TextModeration({ Content: data.comment });
-          const resp = Buffer.from(respcommet).toString('base64');
+          const resp = Buffer.from(await client.TextModeration({ Content: data.comment })).toString('base64');
           if (!resp.Suggestion) {
             throw new Error('Suggestion is empty. Tencent Cloud TMS info:', resp);
           }
