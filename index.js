@@ -56,6 +56,7 @@ module.exports = function({secretId, secretKey, region}) {
           console.log(e);
           data.status = 'waiting';
         }
+        // return data;
       },
     },
   };

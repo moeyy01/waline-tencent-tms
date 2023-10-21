@@ -5,7 +5,7 @@ A Waline plugin that add tencent cloud TMS audit service for Waline when post a 
 ## How to Install
 
 ```
-npm i @waline-plugins/tencent-tms
+npm i moeyy-waline-tencent-tms
 ```
 
 ## How to Use
@@ -13,7 +13,7 @@ npm i @waline-plugins/tencent-tms
 ```js
 // index.js
 const Waline = require('@waline/vercel');
-const TencentTMS = require('@waline-plugins/tencent-tms');
+const TencentTMS = require('moeyy-waline-tencent-tms');
 
 module.exports = Waline({
   plugins: [
