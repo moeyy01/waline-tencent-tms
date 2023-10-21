@@ -1,0 +1,12 @@
+{
+  "name": "@waline-plugins/tencent-tms",
+  "version": "1.0.0",
+  "description": "a Waline plugin that add tencent cloud TMS audit service for Waline when post a new comment",
+  "main": "index.js",
+  "keywords": ["Waline", "plugin", "Tencent", "cloud", "TMS", "comment"],
+  "author": "lizheming<i@imnerd.org>",
+  "license": "MIT",
+  "dependencies": {
+    "tencentcloud-sdk-nodejs-tms": "^4.0.630"
+  }
+}
