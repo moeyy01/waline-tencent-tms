@@ -25,14 +25,17 @@ module.exports = function({secretId, secretKey, region}) {
       async preSave(data) {
         const { userInfo } = this.ctx.state;
         const isAdmin = userInfo.type === 'administrator';
-        // ignore admin comment
         if (isAdmin) {
           return;
         }
 
+        const utf8Buffer = Buffer.from(data.comment, 'utf8');
+        const contentBase64 = utf8Buffer.toString('base64');
+
         const client = new TmsClient(clientConfig);
         try {
-          const resp = Buffer.from(await client.TextModeration({ Content: data.comment })).toString('base64');
+          const resp = await client.TextModeration({ Content: contentBase64 });
+
           if (!resp.Suggestion) {
             throw new Error('Suggestion is empty. Tencent Cloud TMS info:', resp);
           }
@@ -44,10 +47,10 @@ module.exports = function({secretId, secretKey, region}) {
             case 'Block':
               data.status = 'spam';
               break;
-              case 'Review':
-              default:
-                data.status = 'waiting';
-                break;
+            case 'Review':
+            default:
+              data.status = 'waiting';
+              break;
           }
         } catch(e) {
           console.log(e);
