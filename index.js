@@ -45,7 +45,7 @@ module.exports = function({secretId, secretKey, region}) {
               data.status = 'approved';
               break;
               case 'Block':
-                if (resp.Label === 'Ad') { //因为网站链接会被判断为AD，故过滤掉
+                if (resp.Label === 'Ad') {
                   data.status = 'approved';
                 } else {
                   data.status = 'spam';
